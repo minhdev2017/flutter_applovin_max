@@ -3,7 +3,7 @@
 # Run `pod lib lint ironsource.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'ironsource'
+  s.name             = 'flutter_applovin_max'
   s.version          = '0.1.0'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
