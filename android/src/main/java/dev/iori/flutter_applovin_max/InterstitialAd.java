@@ -2,6 +2,7 @@ package dev.iori.flutter_applovin_max;
 
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdViewAdListener;
+import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxInterstitialAd;
 
 import io.flutter.Log;
@@ -40,11 +41,7 @@ public class InterstitialAd implements MaxAdViewAdListener {
 
     }
 
-    @Override
-    public void onAdLoadFailed(final String adUnitId, final int errorCode) {
-        Log.e("AppLovin", "AdLoadFailed sdk error " + errorCode);
-        FlutterApplovinMaxPlugin.getInstance().Callback("AdLoadFailed");
-    }
+
 
     @Override
     public void onAdDisplayed(MaxAd ad) {
@@ -64,10 +61,22 @@ public class InterstitialAd implements MaxAdViewAdListener {
     }
 
     @Override
-    public void onAdDisplayFailed(MaxAd ad, int errorCode) {
-        Log.e("AppLovin", "onAdDisplayFailed sdk error " + errorCode);
+    public void onAdRevenuePaid(MaxAd ad) {
+
+    }
+
+    @Override
+    public void onAdLoadFailed(String adUnitId, MaxError error) {
+        Log.e("AppLovin", "AdLoadFailed sdk error " + error.getAdLoadFailureInfo());
+        FlutterApplovinMaxPlugin.getInstance().Callback("AdLoadFailed");
+    }
+
+    @Override
+    public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+        Log.e("AppLovin", "onAdDisplayFailed sdk error " + error.getAdLoadFailureInfo());
         FlutterApplovinMaxPlugin.getInstance().Callback("AdFailedToDisplay");
     }
+
 
     @Override
     public void onAdExpanded(final MaxAd ad){

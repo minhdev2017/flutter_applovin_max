@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdFormat;
 import com.applovin.mediation.MaxAdViewAdListener;
+import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxAdView;
 import com.applovin.sdk.AppLovinSdkUtils;
 
@@ -91,17 +92,25 @@ public class Banner implements PlatformView, MaxAdViewAdListener {
         channel.invokeMethod("AdLoaded", null);
     }
 
+
     @Override
-    public void onAdLoadFailed(final String adUnitId, final int errorCode) {
-        Log.e("AppLovin", "AdLoadFailed sdk error " + errorCode);
+    public void onAdClicked(final MaxAd maxAd) {}
+
+    @Override
+    public void onAdRevenuePaid(MaxAd ad) {
+
+    }
+
+    @Override
+    public void onAdLoadFailed(String adUnitId, MaxError error) {
+        Log.e("AppLovin", "AdLoadFailed sdk error " + error.getAdLoadFailureInfo());
         channel.invokeMethod("AdLoadFailed", null);
     }
 
     @Override
-    public void onAdDisplayFailed(final MaxAd maxAd, final int errorCode) {}
+    public void onAdDisplayFailed(MaxAd ad, MaxError error) {
 
-    @Override
-    public void onAdClicked(final MaxAd maxAd) {}
+    }
 
     @Override
     public void onAdExpanded(final MaxAd maxAd) {}
