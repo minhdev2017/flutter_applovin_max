@@ -34,7 +34,7 @@ class FlutterApplovinMax {
 
   static Future<void> init(String reward, String full, String banner, String native) async {
     try {
-      await _channel.invokeMethod('Init', {'reward': reward,'full': full,'banner': banner,'native': native});
+      await _channel.invokeMethod('Init', {'reward': reward, 'full': full, 'banner': banner, 'native': native});
     } catch (e) {
       print(e.toString());
     }
@@ -42,30 +42,31 @@ class FlutterApplovinMax {
 
   static Future<bool> showRewardVideo(AppLovinListener listener) async {
     try {
-      _channel.setMethodCallHandler(
-          (MethodCall call) async => handleMethod(call, listener));
+      _channel.setMethodCallHandler((MethodCall call) async => handleMethod(call, listener));
       return await _channel.invokeMethod('ShowRewardVideo');
     } catch (e) {
       print(e.toString());
+      return false;
     }
   }
 
   static Future<bool> ShowFullAds(AppLovinListener listener) async {
     try {
-      _channel.setMethodCallHandler(
-              (MethodCall call) async => handleMethod(call, listener));
+      _channel.setMethodCallHandler((MethodCall call) async => handleMethod(call, listener));
       return await _channel.invokeMethod('ShowFullAds');
     } catch (e) {
       print(e.toString());
+      return false;
     }
   }
 
-
-  static bool isBannerLoadFailed( MethodCall call, ) {
+  static bool isBannerLoadFailed(
+    MethodCall call,
+  ) {
     return appLovinAdListener[call.method] == AppLovinAdListener.adLoadFailed;
   }
-  static Future<void> handleMethod(
-      MethodCall call, AppLovinListener listener) async {
-    listener(appLovinAdListener[call.method]);
+
+  static Future<void> handleMethod(MethodCall call, AppLovinListener listener) async {
+    listener(appLovinAdListener[call.method]!);
   }
 }

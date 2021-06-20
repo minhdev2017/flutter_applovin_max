@@ -60,10 +60,6 @@ public class InterstitialAd implements MaxAdViewAdListener {
         FlutterApplovinMaxPlugin.getInstance().Callback("AdClicked");
     }
 
-    @Override
-    public void onAdRevenuePaid(MaxAd ad) {
-
-    }
 
     @Override
     public void onAdLoadFailed(String adUnitId, MaxError error) {

@@ -96,10 +96,6 @@ public class Banner implements PlatformView, MaxAdViewAdListener {
     @Override
     public void onAdClicked(final MaxAd maxAd) {}
 
-    @Override
-    public void onAdRevenuePaid(MaxAd ad) {
-
-    }
 
     @Override
     public void onAdLoadFailed(String adUnitId, MaxError error) {

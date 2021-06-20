@@ -61,10 +61,6 @@ public class RewardedVideo implements MaxRewardedAdListener {
         FlutterApplovinMaxPlugin.getInstance().Callback("AdClicked");
     }
 
-    @Override
-    public void onAdRevenuePaid(MaxAd ad) {
-
-    }
 
     @Override
     public void onAdLoadFailed(String adUnitId, MaxError error) {

@@ -17,7 +17,7 @@ A new Flutter plugin.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
   s.dependency 'AppLovinSDK'
-
-  s.platform = :ios, '9.0'
+  s.ios.deployment_target = '12.0'
+  s.static_framework = true
 
 end
