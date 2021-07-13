@@ -124,9 +124,13 @@ public class FlutterApplovinMaxPlugin  implements FlutterPlugin, MethodCallHandl
 
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        this.context = null;
-        this.channel.setMethodCallHandler(null);
-        this.channel = null;
+        try {
+            this.context = null;
+            this.channel.setMethodCallHandler(null);
+            this.channel = null;
+        }catch (Exception err) {
+            Log.e("Method error", err.toString());
+        }
     }
 
     @Override
